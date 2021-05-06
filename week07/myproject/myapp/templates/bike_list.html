@@ -1,0 +1,18 @@
+<h2>Bikes</h2>
+<ul>
+  {% for bike in object_list %}
+    <li><a href="{{bike.get_absolute_url}}">{{bike}}</a></li>
+  {% endfor %}
+</ul>
+
+<div class="pagination">
+  {% if page_obj.has_previous %}
+    <a href="?page=1">[1]</a>
+    <a href="?page={{page_obj.previous_page_number}}">[<]</a>
+  {% endif %}
+  [{{page_obj.number}}]
+  {% if page_obj.has_next %}
+    <a href="?page={{page_obj.next_page_number}}">[>]</a>
+    <a href="?page={{page_obj.paginator.num_pages}}">[{{page_obj.paginator.num_pages}}]</a>
+  {% endif %}
+</div>
